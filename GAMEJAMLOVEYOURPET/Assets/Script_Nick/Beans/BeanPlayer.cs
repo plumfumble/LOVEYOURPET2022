@@ -10,6 +10,7 @@ public class BeanPlayer : MonoBehaviour
     [SerializeField]
     private Camera mainCamera;
     public bool losing;
+    public bool mousenotin;
 
     // Start is called before the first frame update
     void Start()
@@ -32,9 +33,19 @@ public class BeanPlayer : MonoBehaviour
         float stuff = mouseWorldPosition.x - 0.5f;
         float rythym = stuff * 15f;
         float control = rythym - transform.position.x;
+        if (mousenotin == false)
+        {
+            transform.position = transform.position + new Vector3(control * velocity * Time.deltaTime, 0, 0);
+        }
         
-        transform.position = transform.position + new Vector3(control * velocity * Time.deltaTime, 0, 0);
-
+        if (0 > Input.mousePosition.x || 0 > Input.mousePosition.y || Screen.width < Input.mousePosition.x || Screen.height < Input.mousePosition.y)
+        {
+            mousenotin = true;
+        }
+        else
+        {
+            mousenotin = false;
+        }
 
 
     }

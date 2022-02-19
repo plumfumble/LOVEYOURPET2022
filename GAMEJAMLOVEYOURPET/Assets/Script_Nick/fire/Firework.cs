@@ -5,9 +5,10 @@ using UnityEngine;
 public class Firework : MonoBehaviour
 {
     [SerializeField] Rigidbody2D body;
+    public float speed;
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward);
+        transform.position += ((Vector3.up * speed) * Time.deltaTime);
     }
 }

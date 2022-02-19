@@ -16,10 +16,12 @@ public class target : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        this.GetComponent<Renderer>().enabled = false;
+        
         if (collision.tag == "Player")
         {
+            this.GetComponent<Renderer>().enabled = false;
             firescoremanager.score++;
+            FireworkPlayerControl.numberOfFireworks++;
             Debug.Log(firescoremanager.score);
         }
     }
