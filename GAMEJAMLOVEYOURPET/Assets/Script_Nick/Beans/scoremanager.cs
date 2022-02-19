@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 //using UnityEngine.Ui;
 
-public class scoremanager : MonoBehaviour
+public class beanscoremanager : MonoBehaviour
 {
     [SerializeField]
     public static int score = 0;
@@ -16,5 +16,5 @@ public class scoremanager : MonoBehaviour
     }
 
     // Update is called once per frame
-   
+
 }

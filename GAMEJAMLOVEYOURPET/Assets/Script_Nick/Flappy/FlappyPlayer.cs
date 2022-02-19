@@ -34,8 +34,8 @@ public class FlappyPlayer : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            scoremanager.score++;
-            Debug.Log(scoremanager.score);
+            flappyscoremanager.score++;
+            Debug.Log(flappyscoremanager.score);
         }
         else
         {
