@@ -192,6 +192,22 @@ MonoBehaviour:
   - {fileID: 2115772636}
   - {fileID: 975904717}
   - {fileID: 952441649}
+  speedUpPoints:
+  - 0
+  - 20
+  - 35
+  - 50
+  - 75
+  - 90
+  - 120
+  setSpeedPoints:
+  - 0.5
+  - 0.45
+  - 0.4
+  - 0.35
+  - 0.3
+  - 0.25
+  - 0.2
 --- !u!212 &131399228
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -413,8 +429,32 @@ MonoBehaviour:
   timeToSpawn: 2.5
   minTimeToSpawn: 0.2
   setTimeToSpawn: 2.5
+  speedUpPoints:
+  - 0
+  - 20
+  - 35
+  - 50
+  - 75
+  - 90
+  - 120
+  setTimeSpawnPoints:
+  - 2.5
+  - 2.1
+  - 1.7
+  - 1.4
+  - 1
+  - 0.7
+  - 0.5
   obstacleSpeed: 15
   obstacleSpeedCap: 30
+  obstacleSpeedPoints:
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
 --- !u!1 &650683020
 GameObject:
   m_ObjectHideFlags: 0

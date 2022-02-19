@@ -6,7 +6,13 @@ using DG.Tweening;
 public class SwimmingPlayerControl : MonoBehaviour
 {
     [SerializeField] Transform[] lanePositons;
+    [SerializeField] List<float> speedUpPoints;
+    [SerializeField] List<float> setSpeedPoints;
+
     int currentLane;
+
+    float duration;
+    int index;
 
     void Start()
     {
@@ -15,6 +21,19 @@ public class SwimmingPlayerControl : MonoBehaviour
 
     void Update()
     {
+
+        for (int i = 0; i < speedUpPoints.Count; i++)
+        {
+            if (duration > speedUpPoints[i])
+            {
+                index = i;
+            }
+            else
+            {
+                break;
+            }
+        }
+
         int prevLane = currentLane;
         // Left Click
         if (Input.GetButtonDown("Fire1"))
@@ -39,10 +58,15 @@ public class SwimmingPlayerControl : MonoBehaviour
             UpdateLane();
         }
     }
+
+    void FixedUpdate()
+    {
+        duration += Time.deltaTime;
+    }
     
     void UpdateLane()
     {
-        transform.DOMove(lanePositons[currentLane].position, 0.5f);
+        transform.DOMove(lanePositons[currentLane].position, setSpeedPoints[index]);
     }
 
     void OnTriggerEnter2D(Collider2D collision)

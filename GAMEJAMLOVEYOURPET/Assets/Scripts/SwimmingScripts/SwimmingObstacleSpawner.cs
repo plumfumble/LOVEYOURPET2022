@@ -13,14 +13,19 @@ public class SwimmingObstacleSpawner : MonoBehaviour
     [SerializeField] float timeToSpawn;
     [SerializeField] float minTimeToSpawn;
     [SerializeField] float setTimeToSpawn;
+    [SerializeField] List<float> speedUpPoints;
+    [SerializeField] List<float> setTimeSpawnPoints;
 
     [Header("Speed")]
 
     [SerializeField] float obstacleSpeed;
     [SerializeField] float obstacleSpeedCap;
+    [SerializeField] List<float> obstacleSpeedPoints;
 
     int obstaclesToSpawn = 1;
+
     float duration;
+    int speedUpIndex;
 
     void Start()
     {
@@ -33,6 +38,17 @@ public class SwimmingObstacleSpawner : MonoBehaviour
         {
             obstaclesToSpawn = 2;
         }
+        for (int i = 0; i < speedUpPoints.Count; i++)
+        {
+            if (duration > speedUpPoints[i])
+            {
+                speedUpIndex = i;
+            }
+            else
+            {
+                break;
+            }
+        }
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -43,7 +59,7 @@ public class SwimmingObstacleSpawner : MonoBehaviour
         }
         else
         {
-            timeToSpawn = setTimeToSpawn;
+            timeToSpawn = setTimeSpawnPoints[speedUpIndex];
             SpawnObstacle();
         }
 
@@ -55,7 +71,7 @@ public class SwimmingObstacleSpawner : MonoBehaviour
         for (int i = 0; i < obstaclesToSpawn; i++)
         {
             GameObject go = Instantiate(obstaclePrefab, obstacleSpawnPoints[Random.Range(0, 3)].position, Quaternion.identity, this.transform);
-            go.GetComponent<SwimmingObstacle>().SetStats(obstacleSpeed);
+            go.GetComponent<SwimmingObstacle>().SetStats(obstacleSpeedPoints[speedUpIndex]);
         }
     }
 }
