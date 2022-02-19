@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class pipespawner : MonoBehaviour
 {
     public float queueTime = 1.5f;
     private float time = 0;
     public GameObject obstacle;
+    
 
     public float height;
 
