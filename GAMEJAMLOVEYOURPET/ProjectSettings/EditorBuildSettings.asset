@@ -4,5 +4,29 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: dc8de6bdca5dd8c42a66fb1fe8f65551
+  - enabled: 1
+    path: Assets/Scenes/CatchingScene.unity
+    guid: 546f42620cb84a047a7d8a512d7a1571
+  - enabled: 1
+    path: Assets/Scenes/DiggingScene.unity
+    guid: 0dd58b607da077a4297908e08b71acb1
+  - enabled: 1
+    path: Assets/Scenes/FireScene.unity
+    guid: db60d2ec76955414b85703f1f6c3ecce
+  - enabled: 1
+    path: Assets/Scenes/flappyfriend.unity
+    guid: 09ec91337d2e633428b9e70c618625af
+  - enabled: 1
+    path: Assets/Scenes/SwimmingScene.unity
+    guid: 1164f784000af6340b4418b8d37804d4
+  - enabled: 1
+    path: Assets/Scenes/beansgame.unity
+    guid: 824a0cfa24db0fe42b4cd10bd6007393
+  - enabled: 1
+    path: Assets/Scenes/Tourny.unity
+    guid: c1435284548670b4cad42c91eec8c265
   m_configObjects: {}

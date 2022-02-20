@@ -9,23 +9,32 @@ using UnityEngine.SceneManagement;
 public class MainMenuController : MonoBehaviour
 {
     public Slider[] statsliders; //0 = fire, 1 = plant, 2 = fly, 3 = surf, 4 = exp, 5 = happiness, 6 = energy
-    public TMP_InputField nameinput;
-    public TextMeshProUGUI moneycounter,
+    public GameObject nameinput;
+    InputField t_nameinput;
+    public GameObject moneycounter,
                 petname,
                 statsmenuname;
+    TextMeshProUGUI t_moneycounter,
+                t_petname,
+                t_statsmenuname;
     public GameObject errorPopup,
-                        newPetMenu;
+                        newPetMenu,
+                        mainGUI,
+                        BGGUI;
+    bool doesOwnPet;
 
     public void Awake()
     {
-        if (!File.Exists($"{Application.persistentDataPath}/save.json"))
-            newPetMenu.SetActive(true);
-        else
-            LoadGame();
+
+        t_moneycounter = moneycounter.GetComponent<TextMeshProUGUI>();
+        t_petname = petname.GetComponent<TextMeshProUGUI>();
+        t_statsmenuname = statsmenuname.GetComponent<TextMeshProUGUI>();
+        t_nameinput = nameinput.GetComponent<InputField>();
     }
     public void Start()
     {
-        GUIupdate();
+        if(doesOwnPet)
+            GUIupdate();
     }
 
     public void feedPet()
@@ -39,6 +48,18 @@ public class MainMenuController : MonoBehaviour
             GUIupdate();
         }
     }
+
+    public void playWithPet()
+    {
+        if (PetSave.pet.energy < 2)
+            onError("energy");
+        else
+        {
+            PetSave.pet.energy -= 2;
+            SceneManager.LoadScene("CatchingScene");
+        }
+    }
+
     public void goToFire()
     {
         if (PetSave.pet.energy < 2)
@@ -46,7 +67,7 @@ public class MainMenuController : MonoBehaviour
         else
         {
             PetSave.pet.energy -= 2;
-            //change scene
+            SceneManager.LoadScene("FireScene");
         }
     }
 
@@ -57,7 +78,7 @@ public class MainMenuController : MonoBehaviour
         else
         {
             PetSave.pet.energy -= 2;
-            //change scene
+            SceneManager.LoadScene("beansgame");
         }
     }
 
@@ -68,7 +89,7 @@ public class MainMenuController : MonoBehaviour
         else
         {
             PetSave.pet.energy -= 2;
-            //change scene
+            SceneManager.LoadScene("flappyfriend");
         }
     }
 
@@ -79,28 +100,33 @@ public class MainMenuController : MonoBehaviour
         else
         {
             PetSave.pet.energy -= 2;
-            //change scene
+            SceneManager.LoadScene("SwimmingScene");
         }
     }
-
+    public void goToTreasure()
+    {
+        SceneManager.LoadScene("DiggingScene");
+    }
     public void adoptPet()
     {
-        Debug.Log(PetSave.pet);
-        PetSave.pet.setupNewGame(nameinput.GetComponent<TextMeshPro>().text);
+        Debug.Log(t_nameinput.text);
+        PetSave.pet = new PetStats();
+        PetSave.pet.setupNewGame(t_nameinput.text);
         GUIupdate();
     }
 
     public void onError(string notenough)
     {
         errorPopup.SetActive(true);
-        GetComponentInChildren<TextMeshProUGUI>().text = "You need more " + notenough + "!";
+        errorPopup.GetComponentInChildren<TextMeshProUGUI>().text = "You need more " + notenough + "!";
     }
 
     public void GUIupdate()
     {
-        petname.text = PetSave.pet.petname;
-        statsmenuname.text = PetSave.pet.petname + "'s Stats";
-        moneycounter.text = PetSave.pet.money.ToString();
+        Debug.Log(t_petname.text);
+        t_petname.text = PetSave.pet.petname;
+        t_statsmenuname.text = PetSave.pet.petname + "'s Stats";
+        t_moneycounter.text = PetSave.pet.money.ToString();
         statsliders[0].value = PetSave.pet.firestat;
         statsliders[1].value = PetSave.pet.plantstat;
         statsliders[2].value = PetSave.pet.flystat;
@@ -122,5 +148,21 @@ public class MainMenuController : MonoBehaviour
         PetStats loadedfile = JsonUtility.FromJson<PetStats>(gamesave);
         Debug.Log(Application.persistentDataPath);
         PetSave.pet = loadedfile;
+        GUIupdate();
+    }
+
+    public void PlayButton()
+    {
+        if (!File.Exists($"{Application.persistentDataPath}/save.json"))
+        {
+            newPetMenu.SetActive(true);
+            doesOwnPet = false;
+        }
+        else
+        {
+            LoadGame();
+            mainGUI.SetActive(true);
+            BGGUI.SetActive(true);
+        }
     }
 }

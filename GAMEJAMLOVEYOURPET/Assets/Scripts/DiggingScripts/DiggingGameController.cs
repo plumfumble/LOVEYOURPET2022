@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DiggingGameController : MonoBehaviour
 {
+
     [SerializeField] GameObject itemPrefab;
     [SerializeField] GameObject trapPrefab;
     [Header("Spawning")]
@@ -28,8 +30,15 @@ public class DiggingGameController : MonoBehaviour
     [SerializeField] float setTrapSpawn;
     bool spawnTraps;
 
+    [Header("Audio")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip gemSound;
+    [SerializeField] AudioClip boomSound;
+
     float duration;
     int speedUpIndex;
+
+    int gems = 0;
 
     int lives = 3;
     // Start is called before the first frame update
@@ -79,13 +88,14 @@ public class DiggingGameController : MonoBehaviour
                 di = go.GetComponent<DigItem>();
                 di.SetStats(itemSpeedPoints[speedUpIndex], setLifetimePoints[speedUpIndex]);
                 di.OnMissed += LoseLife;
+                di.OnClick += AddValue;
             }
             else
             {
                 go = Instantiate(trapPrefab, transform.position, Quaternion.Euler(new Vector3(0, 0, Random.Range(-180, 180))), this.transform);
                 di = go.GetComponent<DigItem>();
                 di.SetStats(itemSpeedPoints[speedUpIndex], setLifetimePoints[speedUpIndex]);
-                di.OnClick += LoseLife;
+                di.OnClick += ClickBomb;
             }
         }
         else
@@ -94,17 +104,32 @@ public class DiggingGameController : MonoBehaviour
             di = go.GetComponent<DigItem>();
             di.SetStats(itemSpeedPoints[speedUpIndex], setLifetimePoints[speedUpIndex]);
             di.OnMissed += LoseLife;
+            di.OnClick += AddValue;
         }
         
     }
 
+    void AddValue()
+    {
+        audioSource.PlayOneShot(gemSound);
+        gems++;
+    }
+
+    void ClickBomb()
+    {
+        audioSource.PlayOneShot(boomSound);
+        LoseLife();
+    }
     void LoseLife()
     {
         Debug.Log("??");
         lives--;
         if (lives <= 0)
         {
-            Debug.Log("You Lose!");
+            Debug.Log("Time Lasted: " + duration + "/ Gems Gained: " + gems);
+            PetSave.pet.money += gems;
+            //Debug.Log("You Lose!");
+            SceneManager.LoadScene("Main Menu");
         }
     }
 }
