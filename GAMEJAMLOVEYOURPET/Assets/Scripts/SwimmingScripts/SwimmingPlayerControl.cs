@@ -98,8 +98,8 @@ public class SwimmingPlayerControl : MonoBehaviour
                 audioSource.PlayOneShot(crashSound);
                 StartCoroutine(ReturnHome(1.5f));
                 ending = true;
-                PetSave.pet.surfstat += (int)duration / 5;
-                PetSave.pet.expstat += (int)duration / 5;
+                PetSave.pet.surfstat += (int)duration / 2;
+                PetSave.pet.expstat += (int)duration / 2;
                 //Debug.Log("You Lose!!");
             }
         }

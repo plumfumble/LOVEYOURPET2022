@@ -20,7 +20,9 @@ public class MainMenuController : MonoBehaviour
     public GameObject errorPopup,
                         newPetMenu,
                         mainGUI,
-                        BGGUI;
+                        BGGUI,
+                        evolveButton;
+    [SerializeField] PetControl petcontrols;
     bool doesOwnPet;
     [SerializeField] GameObject gameOpened;
     public void Awake()
@@ -32,6 +34,7 @@ public class MainMenuController : MonoBehaviour
     }
     public void Start()
     {
+        /*
         if (!File.Exists($"{Application.persistentDataPath}/save.json"))
         {
             doesOwnPet = false;
@@ -44,6 +47,9 @@ public class MainMenuController : MonoBehaviour
         {
             GUIupdate();
         }
+        */
+
+
     }
 
     public void feedPet()
@@ -76,6 +82,7 @@ public class MainMenuController : MonoBehaviour
         else
         {
             PetSave.pet.energy -= 2;
+            PetSave.pet.happiness -= 2;
             SceneManager.LoadScene("FireScene");
         }
     }
@@ -86,6 +93,7 @@ public class MainMenuController : MonoBehaviour
             onError("energy");
         else
         {
+            PetSave.pet.happiness -= 2;
             PetSave.pet.energy -= 2;
             SceneManager.LoadScene("beansgame");
         }
@@ -97,6 +105,7 @@ public class MainMenuController : MonoBehaviour
             onError("energy");
         else
         {
+            PetSave.pet.happiness -= 2;
             PetSave.pet.energy -= 2;
             SceneManager.LoadScene("flappyfriend");
         }
@@ -108,6 +117,7 @@ public class MainMenuController : MonoBehaviour
             onError("energy");
         else
         {
+            PetSave.pet.happiness -= 2;
             PetSave.pet.energy -= 2;
             SceneManager.LoadScene("SwimmingScene");
         }
@@ -119,9 +129,14 @@ public class MainMenuController : MonoBehaviour
     public void adoptPet()
     {
         Debug.Log(t_nameinput.text);
-        PetSave.pet = new PetStats();
+        if (!File.Exists($"{Application.persistentDataPath}/save.json"))
+            PetSave.pet = new PetStats();
         PetSave.pet.setupNewGame(t_nameinput.text);
         GUIupdate();
+        petcontrols.UPDATEPET();
+        if (PetSave.pet.expstat >= 100)
+            evolveButton.SetActive(true);
+
     }
 
     public void onError(string notenough)
@@ -173,9 +188,31 @@ public class MainMenuController : MonoBehaviour
         {
             doesOwnPet = true;
             if (!GameOpened.Instance.Opened) LoadGame();
+            GUIupdate();
             mainGUI.SetActive(true);
             BGGUI.SetActive(true);
+            petcontrols.UPDATEPET();
+            if (PetSave.pet.expstat >= 100)
+                evolveButton.SetActive(true);
         }
         GameOpened.Instance.Opened = true;
+    }
+
+    public void eVolve()
+    {
+        PetSave.pet.isevolve = true;
+        if (PetSave.pet.happiness > 50)
+            PetSave.pet.isgoodadult = true;
+
+        if (PetSave.pet.plantstat > 70)
+            PetSave.pet.plantadult = true;
+        if (PetSave.pet.firestat > 70)
+            PetSave.pet.fireadult = true;
+        if (PetSave.pet.surfstat > 70)
+            PetSave.pet.surfadult = true;
+        if (PetSave.pet.flystat > 70)
+            PetSave.pet.flyadult = true;
+
+        petcontrols.UPDATEPET();
     }
 }
