@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 using UnityEngine.SceneManagement;
 
 public class DiggingGameController : MonoBehaviour
@@ -17,6 +18,7 @@ public class DiggingGameController : MonoBehaviour
     [SerializeField] float setTimeToSpawn;
     [SerializeField] List<float> speedUpPoints;
     [SerializeField] List<float> setTimeSpawnPoints;
+    [SerializeField] DiggingLivesDisplay livesDisplay;
 
     [Header("Speed")]
 
@@ -39,7 +41,7 @@ public class DiggingGameController : MonoBehaviour
     int speedUpIndex;
 
     int gems = 0;
-
+    bool endGame;
     int lives = 3;
     // Start is called before the first frame update
     void Start()
@@ -64,16 +66,19 @@ public class DiggingGameController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (timeToSpawn > 0)
+        if (!endGame)
         {
-            timeToSpawn -= Time.deltaTime;
+            if (timeToSpawn > 0)
+            {
+                timeToSpawn -= Time.deltaTime;
+            }
+            else
+            {
+                timeToSpawn = setTimeSpawnPoints[speedUpIndex];
+                SpawnItem();
+            }
+            duration += Time.deltaTime;
         }
-        else
-        {
-            timeToSpawn = setTimeSpawnPoints[speedUpIndex];
-            SpawnItem();
-        }
-        duration += Time.deltaTime;
     }
 
     void SpawnItem()
@@ -124,12 +129,27 @@ public class DiggingGameController : MonoBehaviour
     {
         Debug.Log("??");
         lives--;
+        livesDisplay.UpdateLives(lives);
         if (lives <= 0)
         {
-            Debug.Log("Time Lasted: " + duration + "/ Gems Gained: " + gems);
+            List<DigItem> gos = FindObjectsOfType<DigItem>().ToList();
+            foreach (DigItem di in gos)
+            {
+                Destroy(di.gameObject);
+            }
+            //Debug.Log("Time Lasted: " + duration + "/ Gems Gained: " + gems);
+            endGame = true;
+            StartCoroutine(ReturnHome(1.5f));
             PetSave.pet.money += gems;
             //Debug.Log("You Lose!");
-            SceneManager.LoadScene("Main Menu");
+            
         }
+    }
+
+    IEnumerator ReturnHome(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        Debug.Log("worjing! :)");
+        SceneManager.LoadScene("Main Menu");
     }
 }

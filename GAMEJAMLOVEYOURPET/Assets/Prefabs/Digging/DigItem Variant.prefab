@@ -24,12 +24,16 @@ PrefabInstance:
       value: DigItem Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3358418795866711342, guid: 3228b8dc9330cfd4aa16a3f41ecc7f32, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0edfe100f6521d1408ba225acfeb6b69, type: 3}
+    - target: {fileID: 3358418795866711342, guid: 3228b8dc9330cfd4aa16a3f41ecc7f32, type: 3}
       propertyPath: m_Color.b
-      value: 0.08962262
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3358418795866711342, guid: 3228b8dc9330cfd4aa16a3f41ecc7f32, type: 3}
       propertyPath: m_Color.g
-      value: 0.20846948
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3358418795866711342, guid: 3228b8dc9330cfd4aa16a3f41ecc7f32, type: 3}
       propertyPath: m_Color.r

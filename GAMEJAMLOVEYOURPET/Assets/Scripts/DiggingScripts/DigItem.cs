@@ -31,7 +31,7 @@ public class DigItem : MonoBehaviour
     void FixedUpdate()
     {
         transform.Translate(Vector3.up * speed * Time.deltaTime);
-        scaling = sr.transform.DOScale(new Vector3(1, 1, 1), 1.5f).SetId(transform.gameObject);
+        scaling = sr.transform.DOScale(new Vector3(.5f, .5f, 1), 1.5f).SetId(transform.gameObject);
         lifetime -= Time.deltaTime;
     }
 
