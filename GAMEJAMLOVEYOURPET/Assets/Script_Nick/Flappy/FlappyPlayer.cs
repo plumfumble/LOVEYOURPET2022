@@ -7,13 +7,13 @@ public class FlappyPlayer : MonoBehaviour
 
     public float velocity = 2.4f;
     private Rigidbody2D rigidbody;
- 
+    private AudioSource bellsource;
     public bool losing;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        bellsource = GetComponent<AudioSource>();
         rigidbody = GetComponent<Rigidbody2D>();
     }
 
@@ -34,6 +34,7 @@ public class FlappyPlayer : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            bellsource.Play();
             flappyscoremanager.score++;
             Debug.Log(flappyscoremanager.score);
         }

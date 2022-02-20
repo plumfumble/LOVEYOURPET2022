@@ -6,6 +6,11 @@ public class target : MonoBehaviour
 {
     public float speed;
     public bool goleft;
+    private AudioSource source;
+    private void Start()
+    {
+        source = GetComponent<AudioSource>();
+    }
     void Update()
     {
         if (goleft)
@@ -16,10 +21,13 @@ public class target : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        this.GetComponent<Renderer>().enabled = false;
+        
         if (collision.tag == "Player")
         {
+            source.Play();
+            this.GetComponent<Renderer>().enabled = false;
             firescoremanager.score++;
+            FireworkPlayerControl.numberOfFireworks++;
             Debug.Log(firescoremanager.score);
         }
     }
