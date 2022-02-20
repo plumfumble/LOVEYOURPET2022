@@ -14,6 +14,6 @@ public class Beans : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        this.GetComponent<Renderer>().enabled = false;
+        Destroy(this.gameObject);
     }
 }
