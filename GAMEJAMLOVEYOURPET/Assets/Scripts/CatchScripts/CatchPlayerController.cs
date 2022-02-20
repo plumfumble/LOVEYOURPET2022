@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class CatchPlayerController : MonoBehaviour
 {
@@ -100,7 +101,7 @@ public class CatchPlayerController : MonoBehaviour
                 Debug.Log("Amazing Catches: " + amazingCatches + "/ Good Catches: " + goodCatches + "/ Increase Happiness by: " + addValue);
                 ending = true;
                 PetSave.pet.happiness += addValue;
-                
+                SceneManager.LoadScene("Main Menu");
             }
         }
     }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class SwimmingPlayerControl : MonoBehaviour
 {
@@ -88,6 +89,7 @@ public class SwimmingPlayerControl : MonoBehaviour
                 PetSave.pet.surfstat += (int)duration / 5;
                 ending = true;
                 //Debug.Log("You Lose!!");
+                SceneManager.LoadScene("Main Menu");
             }
         }
         

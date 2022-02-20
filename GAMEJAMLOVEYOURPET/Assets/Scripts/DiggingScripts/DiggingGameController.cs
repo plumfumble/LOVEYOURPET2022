@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DiggingGameController : MonoBehaviour
 {
@@ -128,6 +129,7 @@ public class DiggingGameController : MonoBehaviour
             Debug.Log("Time Lasted: " + duration + "/ Gems Gained: " + gems);
             PetSave.pet.money += gems;
             //Debug.Log("You Lose!");
+            SceneManager.LoadScene("Main Menu");
         }
     }
 }
