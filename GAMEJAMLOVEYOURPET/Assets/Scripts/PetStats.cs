@@ -15,6 +15,12 @@ public class PetStats
                         flystat,
                         surfstat,
                         expstat;
+    public bool isevolve;
+    public bool isgoodadult,
+                fireadult,
+                plantadult,
+                flyadult,
+                surfadult;
 
     public void setupNewGame(string newname)
     {
@@ -30,5 +36,11 @@ public class PetStats
         flystat = 0;
         surfstat = 0;
         expstat = 0;
+        isevolve = false;
+        isgoodadult = false;
+        fireadult = false;
+        plantadult = false;
+        flyadult = false;
+        surfadult = false;
     }
  }
