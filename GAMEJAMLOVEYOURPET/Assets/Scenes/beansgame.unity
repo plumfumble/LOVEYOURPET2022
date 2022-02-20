@@ -134,8 +134,8 @@ GameObject:
   - component: {fileID: 181035087}
   - component: {fileID: 181035086}
   - component: {fileID: 181035085}
-  - component: {fileID: 181035083}
   - component: {fileID: 181035084}
+  - component: {fileID: 181035083}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -362,6 +362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   queueTime: 1.5
   obstacle: {fileID: 5195463958612372311, guid: 80bc2404a539ae34cb5f95b8af748aea, type: 3}
+  launchrate: 1
   width: 4.5
 --- !u!65 &864493195
 BoxCollider:

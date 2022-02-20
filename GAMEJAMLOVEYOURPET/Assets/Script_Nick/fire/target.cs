@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class target : MonoBehaviour
 {
-    public float speed;
+    public float speed=3;
     public bool goleft;
     private AudioSource source;
     private void Start()
@@ -17,7 +17,6 @@ public class target : MonoBehaviour
             transform.position += ((Vector3.left * speed) * Time.deltaTime);
         else
             transform.position += ((Vector3.right * speed) * Time.deltaTime);
-
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -25,11 +24,16 @@ public class target : MonoBehaviour
         if (collision.tag == "Player")
         {
             source.Play();
-            this.GetComponent<Renderer>().enabled = false;
+            
             firescoremanager.score++;
             FireworkPlayerControl.numberOfFireworks++;
             Debug.Log(firescoremanager.score);
+            Destroy(this.gameObject);
         }
+    }
+    public void addspeed(float sp)
+    {
+        speed = sp;
     }
 }
 

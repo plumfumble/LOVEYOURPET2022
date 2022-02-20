@@ -22,10 +22,9 @@ public class MainMenuController : MonoBehaviour
                         mainGUI,
                         BGGUI;
     bool doesOwnPet;
-
+    [SerializeField] GameObject gameOpened;
     public void Awake()
     {
-
         t_moneycounter = moneycounter.GetComponent<TextMeshProUGUI>();
         t_petname = petname.GetComponent<TextMeshProUGUI>();
         t_statsmenuname = statsmenuname.GetComponent<TextMeshProUGUI>();
@@ -33,8 +32,18 @@ public class MainMenuController : MonoBehaviour
     }
     public void Start()
     {
-        if(doesOwnPet)
+        if (!File.Exists($"{Application.persistentDataPath}/save.json"))
+        {
+            doesOwnPet = false;
+        }
+        else
+        {
+            doesOwnPet = true;
+        }
+        if (doesOwnPet)
+        {
             GUIupdate();
+        }
     }
 
     public void feedPet()
@@ -123,6 +132,8 @@ public class MainMenuController : MonoBehaviour
 
     public void GUIupdate()
     {
+        Debug.Log(PetSave.pet.firestat);
+        Debug.Log(PetSave.pet.plantstat);
         Debug.Log(t_petname.text);
         t_petname.text = PetSave.pet.petname;
         t_statsmenuname.text = PetSave.pet.petname + "'s Stats";
@@ -160,9 +171,11 @@ public class MainMenuController : MonoBehaviour
         }
         else
         {
-            LoadGame();
+            doesOwnPet = true;
+            if (!GameOpened.Instance.Opened) LoadGame();
             mainGUI.SetActive(true);
             BGGUI.SetActive(true);
         }
+        GameOpened.Instance.Opened = true;
     }
 }

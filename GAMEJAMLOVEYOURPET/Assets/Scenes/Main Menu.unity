@@ -198,6 +198,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18847734}
   m_CullTransparentMesh: 1
+--- !u!1001 &32824458
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1765603611674868580, guid: a8359668a62864b418749d80523e8deb, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765603611674868580, guid: a8359668a62864b418749d80523e8deb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 18.963205
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765603611674868580, guid: a8359668a62864b418749d80523e8deb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5401309
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765603611674868580, guid: a8359668a62864b418749d80523e8deb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 91.96389
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765603611674868580, guid: a8359668a62864b418749d80523e8deb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765603611674868580, guid: a8359668a62864b418749d80523e8deb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765603611674868580, guid: a8359668a62864b418749d80523e8deb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765603611674868580, guid: a8359668a62864b418749d80523e8deb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765603611674868580, guid: a8359668a62864b418749d80523e8deb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765603611674868580, guid: a8359668a62864b418749d80523e8deb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765603611674868580, guid: a8359668a62864b418749d80523e8deb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776658681309152529, guid: a8359668a62864b418749d80523e8deb, type: 3}
+      propertyPath: m_Name
+      value: GameOpened
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a8359668a62864b418749d80523e8deb, type: 3}
 --- !u!1 &38724191
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,7 +906,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 220793372}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 834174759}
+        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
+        m_MethodName: goToPlant
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &220793372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2502,7 +2571,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 494598499}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 834174759}
+        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
+        m_MethodName: goToSurf
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &494598499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4365,7 +4446,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 833355960}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 834174759}
+        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
+        m_MethodName: goToFly
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &833355960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4463,6 +4556,7 @@ MonoBehaviour:
   newPetMenu: {fileID: 432008330}
   mainGUI: {fileID: 947893743}
   BGGUI: {fileID: 1387370792}
+  gameOpened: {fileID: 6776658681309152529, guid: a8359668a62864b418749d80523e8deb, type: 3}
 --- !u!1 &895790995
 GameObject:
   m_ObjectHideFlags: 0
@@ -7769,7 +7863,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1515260307}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 834174759}
+        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
+        m_MethodName: goToFire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1515260307
 MonoBehaviour:
   m_ObjectHideFlags: 0
