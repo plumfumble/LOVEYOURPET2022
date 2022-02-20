@@ -6,6 +6,8 @@ using DG.Tweening;
 
 public class DigItem : MonoBehaviour
 {
+
+    [SerializeField] AudioSource audioSource;
     [SerializeField] SpriteRenderer sr;
     public event Action OnClick;
     public event Action OnMissed;
@@ -29,7 +31,7 @@ public class DigItem : MonoBehaviour
     void FixedUpdate()
     {
         transform.Translate(Vector3.up * speed * Time.deltaTime);
-        scaling = sr.transform.DOScale(new Vector3(15, 15, 1), 1.5f).SetId(transform.gameObject);
+        scaling = sr.transform.DOScale(new Vector3(1, 1, 1), 1.5f).SetId(transform.gameObject);
         lifetime -= Time.deltaTime;
     }
 
