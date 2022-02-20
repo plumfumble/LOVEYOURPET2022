@@ -28,7 +28,7 @@ public class PetStats
             petname = "Your Pet";
         else
             petname = newname;
-        happiness = 0;
+        happiness = 50;
         energy = 5;
         money = 0;
         firestat = 0;

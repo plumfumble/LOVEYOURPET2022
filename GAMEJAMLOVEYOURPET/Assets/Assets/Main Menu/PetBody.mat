@@ -87,8 +87,8 @@ Material:
     m_Floats:
     - Fire: 0
     - Fly: 0
-    - Happiness: 0.5
-    - Plant: 0
+    - Happiness: 0.48
+    - Plant: 1.01
     - Water: 0
     - _AlphaClip: 0
     - _Blend: 0
