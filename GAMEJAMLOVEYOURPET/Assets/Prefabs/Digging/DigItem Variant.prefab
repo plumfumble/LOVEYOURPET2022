@@ -7,9 +7,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7164035449938481849, guid: 3228b8dc9330cfd4aa16a3f41ecc7f32, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7164035449938481849, guid: 3228b8dc9330cfd4aa16a3f41ecc7f32, type: 3}
+      propertyPath: m_Volume
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -7164035449938481849, guid: 3228b8dc9330cfd4aa16a3f41ecc7f32, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f8e29fbe2a6c0434ab004ded5e6214ba, type: 3}
     - target: {fileID: 1075481978887596214, guid: 3228b8dc9330cfd4aa16a3f41ecc7f32, type: 3}
       propertyPath: m_Name
-      value: DigItem
+      value: DigItem Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3358418795866711342, guid: 3228b8dc9330cfd4aa16a3f41ecc7f32, type: 3}
       propertyPath: m_Color.b

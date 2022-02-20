@@ -9,10 +9,17 @@ public class SwimmingPlayerControl : MonoBehaviour
     [SerializeField] List<float> speedUpPoints;
     [SerializeField] List<float> setSpeedPoints;
 
+    [Header("Audio")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip changeLaneSound;
+    [SerializeField] AudioClip crashSound;
+
     int currentLane;
 
     float duration;
     int index;
+
+    bool ending;
 
     void Start()
     {
@@ -66,14 +73,23 @@ public class SwimmingPlayerControl : MonoBehaviour
     
     void UpdateLane()
     {
+        audioSource.PlayOneShot(changeLaneSound);
         transform.DOMove(lanePositons[currentLane].position, setSpeedPoints[index]);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Obstacle")
+        if (!ending)
         {
-            Debug.Log("You Lose!!");
+            if (collision.gameObject.tag == "Obstacle")
+            {
+                //Debug.Log("Time Lasted: " + duration + "/ Experience Gained: " + (int)duration / 5);
+                audioSource.PlayOneShot(crashSound);
+                PetSave.pet.surfstat += (int)duration / 5;
+                ending = true;
+                //Debug.Log("You Lose!!");
+            }
         }
+        
     }
 }
