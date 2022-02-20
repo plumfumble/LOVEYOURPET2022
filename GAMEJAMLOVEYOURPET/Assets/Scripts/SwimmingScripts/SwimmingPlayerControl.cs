@@ -9,6 +9,9 @@ public class SwimmingPlayerControl : MonoBehaviour
     [SerializeField] Transform[] lanePositons;
     [SerializeField] List<float> speedUpPoints;
     [SerializeField] List<float> setSpeedPoints;
+    [SerializeField] List<float> backgroundSpeed;
+
+    [SerializeField] SwimmingBackground background;
 
     [Header("Audio")]
     [SerializeField] AudioSource audioSource;
@@ -25,11 +28,13 @@ public class SwimmingPlayerControl : MonoBehaviour
     void Start()
     {
         currentLane = 1;
+        background.speed = backgroundSpeed[index];
     }
 
     void Update()
     {
 
+        int prevIndex = index;
         for (int i = 0; i < speedUpPoints.Count; i++)
         {
             if (duration > speedUpPoints[i])
@@ -40,6 +45,11 @@ public class SwimmingPlayerControl : MonoBehaviour
             {
                 break;
             }
+        }
+
+        if (prevIndex != index)
+        {
+            background.speed = backgroundSpeed[index];
         }
 
         int prevLane = currentLane;
@@ -86,12 +96,18 @@ public class SwimmingPlayerControl : MonoBehaviour
             {
                 //Debug.Log("Time Lasted: " + duration + "/ Experience Gained: " + (int)duration / 5);
                 audioSource.PlayOneShot(crashSound);
-                PetSave.pet.surfstat += (int)duration / 5;
+                StartCoroutine(ReturnHome(1.5f));
                 ending = true;
+                PetSave.pet.surfstat += (int)duration / 5;
+                PetSave.pet.expstat += (int)duration / 5;
                 //Debug.Log("You Lose!!");
-                SceneManager.LoadScene("Main Menu");
             }
         }
-        
+    }
+
+    IEnumerator ReturnHome(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        SceneManager.LoadScene("Main Menu");
     }
 }

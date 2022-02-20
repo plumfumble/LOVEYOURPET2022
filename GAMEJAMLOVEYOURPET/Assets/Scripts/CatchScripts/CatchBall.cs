@@ -10,6 +10,7 @@ public class CatchBall : MonoBehaviour
     [SerializeField] AudioClip fallSound;
     [SerializeField] Transform playerHandTarget;
     [SerializeField] Transform petTarget;
+    [SerializeField] Transform pet;
 
     float speed = 2f;
     // Start is called before the first frame update
@@ -29,6 +30,7 @@ public class CatchBall : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         transform.DOJump(petTarget.position, 6, 1, speed).SetEase(Ease.InQuad);
         yield return new WaitForSeconds(speed);
+        pet.DOJump(pet.position, .5f, 1, speed / 5f);
         PlayCatchSound();
         speed -= 0.1f;
         speed = Mathf.Clamp(speed, 0.4f, 2f);

@@ -100,8 +100,8 @@ public class CatchPlayerController : MonoBehaviour
                 int addValue = (amazingCatches * 3) + (int)(goodCatches * 1.5f);
                 Debug.Log("Amazing Catches: " + amazingCatches + "/ Good Catches: " + goodCatches + "/ Increase Happiness by: " + addValue);
                 ending = true;
+                StartCoroutine(ReturnHome(1.5f));
                 PetSave.pet.happiness += addValue;
-                SceneManager.LoadScene("Main Menu");
             }
         }
     }
@@ -116,6 +116,11 @@ public class CatchPlayerController : MonoBehaviour
         duration += Time.deltaTime;
     }
 
+    IEnumerator ReturnHome(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        SceneManager.LoadScene("Main Menu");        
+    }
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
