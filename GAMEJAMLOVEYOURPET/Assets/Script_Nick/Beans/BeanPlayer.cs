@@ -59,8 +59,8 @@ public class BeanPlayer : MonoBehaviour
         if (collision.tag == "Player")
         {
             //collision.GetComponent<Renderer>().enabled = false;
-            beanscoremanager.score++;
-            Debug.Log(beanscoremanager.score);
+            scoremanager.score++;
+            Debug.Log(scoremanager.score);
         }
         else
         {

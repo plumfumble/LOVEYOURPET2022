@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 //using UnityEngine.Ui;
 
-public class beanscoremanager : MonoBehaviour
+public class scoremanager : MonoBehaviour
 {
     [SerializeField]
     public static int score = 0;

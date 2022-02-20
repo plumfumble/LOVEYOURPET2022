@@ -41,6 +41,8 @@ public class FlappyPlayer : MonoBehaviour
         }
         else
         {
+            PetSave.pet.flystat+=flappyscoremanager.score;
+            PetSave.pet.expstat += flappyscoremanager.score;
             SceneManager.LoadScene("Main Menu");
             Destroy(gameObject);
         }
