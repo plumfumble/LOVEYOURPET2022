@@ -90,10 +90,10 @@ Material:
     m_Ints: []
     m_Floats:
     - Fire: 0
-    - Fly: 0
-    - Happiness: 0.5
+    - Fly: 0.84
+    - Happiness: 0.69
     - Plant: 0
-    - Water: 0
+    - Water: 0.96
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1

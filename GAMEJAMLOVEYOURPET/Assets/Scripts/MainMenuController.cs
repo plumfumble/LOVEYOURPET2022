@@ -182,6 +182,7 @@ public class MainMenuController : MonoBehaviour
         if (!File.Exists($"{Application.persistentDataPath}/save.json"))
         {
             newPetMenu.SetActive(true);
+            GUIupdate();
             doesOwnPet = false;
         }
         else
