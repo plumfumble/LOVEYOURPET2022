@@ -216,4 +216,20 @@ public class MainMenuController : MonoBehaviour
 
         petcontrols.UPDATEPET();
     }
+    public void SwitchtoEnglish()
+    {
+        PlayerPrefs.SetString("Language", "English");
+        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        // Load the current scene
+        SceneManager.LoadScene(sceneIndex, LoadSceneMode.Single);
+    }
+    public void SwitchtoJapanese()
+    {
+        PlayerPrefs.SetString("Language", "Japanese");
+        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        // Load the current scene
+        SceneManager.LoadScene(sceneIndex, LoadSceneMode.Single);
+    }
 }
