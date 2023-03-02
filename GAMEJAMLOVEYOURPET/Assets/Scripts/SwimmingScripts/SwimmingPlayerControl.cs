@@ -56,18 +56,19 @@ public class SwimmingPlayerControl : MonoBehaviour
         // Left Click
         if (Input.GetButtonDown("Fire1"))
         {
-            if (currentLane > 0)
+            if (Input.mousePosition.x < Screen.width / 2)
             {
-                currentLane--;
+                if (currentLane > 0)
+                {
+                    currentLane--;
+                }
             }
-        }
-
-        // Right Click
-        if (Input.GetButtonDown("Fire2"))
-        {
-            if (currentLane < 2)
+            else
             {
-                currentLane++;
+                if (currentLane < 2)
+                {
+                    currentLane++;
+                }
             }
         }
 

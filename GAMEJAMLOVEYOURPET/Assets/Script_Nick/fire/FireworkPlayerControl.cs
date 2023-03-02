@@ -40,7 +40,7 @@ public class FireworkPlayerControl : MonoBehaviour
         {
             mousenotin = false;
         }
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonUp("Fire1"))
         {
             Debug.Log("Firing");
             if (numberOfFireworks > 0)
