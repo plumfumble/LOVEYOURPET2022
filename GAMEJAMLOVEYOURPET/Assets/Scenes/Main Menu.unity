@@ -2358,7 +2358,7 @@ GameObject:
   - component: {fileID: 432008333}
   - component: {fileID: 432008332}
   m_Layer: 5
-  m_Name: FIRSTPLAYMENU
+  m_Name: AdoptNewPet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3026,6 +3026,7 @@ RectTransform:
   - {fileID: 432008331}
   - {fileID: 1434431250}
   - {fileID: 38724192}
+  - {fileID: 540239493}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3183,6 +3184,83 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 508741674}
+  m_CullTransparentMesh: 1
+--- !u!1 &540239492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 540239493}
+  - component: {fileID: 540239495}
+  - component: {fileID: 540239494}
+  m_Layer: 5
+  m_Name: LanguageMenu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &540239493
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540239492}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2056798036}
+  - {fileID: 892031478}
+  m_Father: {fileID: 495212721}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &540239494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540239492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: f7f6d3b15b9660f46938c718c2b86974, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 3
+--- !u!222 &540239495
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540239492}
   m_CullTransparentMesh: 1
 --- !u!1 &546801297
 GameObject:
@@ -5058,6 +5136,7 @@ MonoBehaviour:
   mainGUI: {fileID: 947893743}
   BGGUI: {fileID: 1387370792}
   evolveButton: {fileID: 1276484277}
+  languageMenu: {fileID: 540239492}
   petcontrols: {fileID: 1113234349}
   gameOpened: {fileID: 6776658681309152529, guid: a8359668a62864b418749d80523e8deb, type: 3}
 --- !u!1 &892031477
@@ -5091,12 +5170,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1870057261}
-  m_Father: {fileID: 1434431250}
-  m_RootOrder: 2
+  m_Father: {fileID: 540239493}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -433, y: 39}
+  m_AnchoredPosition: {x: -433, y: -85}
   m_SizeDelta: {x: 475.6, y: 148}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &892031479
@@ -5147,6 +5226,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
         m_MethodName: SwitchtoEnglish
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 540239492}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8380,7 +8471,7 @@ GameObject:
   - component: {fileID: 1434431252}
   - component: {fileID: 1434431251}
   m_Layer: 5
-  m_Name: FIRSTESTMENU
+  m_Name: SplashScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8398,8 +8489,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 546801298}
-  - {fileID: 2056798036}
-  - {fileID: 892031478}
   m_Father: {fileID: 495212721}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10504,12 +10593,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 366209027}
-  m_Father: {fileID: 1434431250}
-  m_RootOrder: 1
+  m_Father: {fileID: 540239493}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 432, y: 39}
+  m_AnchoredPosition: {x: 432, y: -85}
   m_SizeDelta: {x: 475.6, y: 148}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2056798037
@@ -10560,6 +10649,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
         m_MethodName: SwitchtoJapanese
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 540239492}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

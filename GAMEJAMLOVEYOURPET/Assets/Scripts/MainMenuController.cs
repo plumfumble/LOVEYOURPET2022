@@ -21,7 +21,8 @@ public class MainMenuController : MonoBehaviour
                         newPetMenu,
                         mainGUI,
                         BGGUI,
-                        evolveButton;
+                        evolveButton,
+                        languageMenu;
     [SerializeField] PetControl petcontrols;
     bool doesOwnPet;
     [SerializeField] GameObject gameOpened;
@@ -31,6 +32,10 @@ public class MainMenuController : MonoBehaviour
         t_petname = petname.GetComponent<TextMeshProUGUI>();
         t_statsmenuname = statsmenuname.GetComponent<TextMeshProUGUI>();
         t_nameinput = nameinput.GetComponent<InputField>();
+
+        if (!PlayerPrefs.HasKey("Language"))
+            languageMenu.gameObject.SetActive(true);
+
     }
     public void Start()
     {
