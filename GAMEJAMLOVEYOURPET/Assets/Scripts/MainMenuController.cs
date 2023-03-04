@@ -54,7 +54,7 @@ public class MainMenuController : MonoBehaviour
         }
         */
 
-
+        //PlayerPrefs.DeleteAll();
     }
 
     public void feedPet()
