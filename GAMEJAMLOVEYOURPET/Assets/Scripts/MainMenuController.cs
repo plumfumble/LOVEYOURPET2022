@@ -22,9 +22,12 @@ public class MainMenuController : MonoBehaviour
                         mainGUI,
                         BGGUI,
                         evolveButton,
-                        languageMenu;
+                        languageMenu,
+                        splashscreen;
     [SerializeField] PetControl petcontrols;
     bool doesOwnPet;
+    public string path;
+    public string json;
     [SerializeField] GameObject gameOpened;
     public void Awake()
     {
@@ -53,8 +56,15 @@ public class MainMenuController : MonoBehaviour
             GUIupdate();
         }
         */
-
-
+        json = JsonUtility.ToJson(PetSave.pet);
+        path = Path.Combine(Application.persistentDataPath, "save.json");
+        if (File.Exists(path))
+        {
+            //string fileContents = File.ReadAllText(path);
+            //LoadGame();
+            PlayButton();
+            SaveButton();//autosave
+        }
     }
 
     public void feedPet()
@@ -134,7 +144,7 @@ public class MainMenuController : MonoBehaviour
     public void adoptPet()
     {
         Debug.Log(t_nameinput.text);
-        if (!File.Exists($"{Application.persistentDataPath}/save.json"))
+        if (!File.Exists(path))
             PetSave.pet = new PetStats();
         PetSave.pet.setupNewGame(t_nameinput.text);
         GUIupdate();
@@ -169,13 +179,20 @@ public class MainMenuController : MonoBehaviour
     
     public void SaveButton()
     {
-        string json = JsonUtility.ToJson(PetSave.pet);
-        File.WriteAllText($"{Application.persistentDataPath}/save.json", json);
+        //string json = JsonUtility.ToJson(PetSave.pet);
+        //File.WriteAllText($"{Application.persistentDataPath}/save.json", json);
+        json = JsonUtility.ToJson(PetSave.pet);
+        File.WriteAllText(path, json);
+
+        string fileContents = File.ReadAllText(path);
+        Debug.Log("File contents: " + fileContents);
+        
+
     }
 
     public void LoadGame()
     {
-        string gamesave = File.ReadAllText($"{Application.persistentDataPath}/save.json", System.Text.Encoding.UTF8);
+        string gamesave = File.ReadAllText(path, System.Text.Encoding.UTF8);
         PetStats loadedfile = JsonUtility.FromJson<PetStats>(gamesave);
         Debug.Log(Application.persistentDataPath);
         PetSave.pet = loadedfile;
@@ -184,11 +201,12 @@ public class MainMenuController : MonoBehaviour
 
     public void PlayButton()
     {
-        if (!File.Exists($"{Application.persistentDataPath}/save.json"))
+        if (!File.Exists(path))
         {
             newPetMenu.SetActive(true);
-            GUIupdate();
+            //GUIupdate();
             doesOwnPet = false;
+            splashscreen.SetActive(false);
         }
         else
         {
@@ -198,6 +216,7 @@ public class MainMenuController : MonoBehaviour
             mainGUI.SetActive(true);
             BGGUI.SetActive(true);
             petcontrols.UPDATEPET();
+            splashscreen.SetActive(false);
             if (PetSave.pet.expstat >= 100)
                 evolveButton.SetActive(true);
         }
