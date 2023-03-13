@@ -152,19 +152,19 @@ public class MainMenuController : MonoBehaviour
 
     public void GUIupdate()
     {
-        Debug.Log(PetSave.pet.firestat);
-        Debug.Log(PetSave.pet.plantstat);
-        Debug.Log(t_petname.text);
-        t_petname.text = PetSave.pet.petname;
-        t_statsmenuname.text = PetSave.pet.petname + "'s Stats";
-        t_moneycounter.text = PetSave.pet.money.ToString();
-        statsliders[0].value = PetSave.pet.firestat;
-        statsliders[1].value = PetSave.pet.plantstat;
-        statsliders[2].value = PetSave.pet.flystat;
-        statsliders[3].value = PetSave.pet.surfstat;
-        statsliders[4].value = PetSave.pet.expstat;
-        statsliders[5].value = PetSave.pet.happiness;
-        statsliders[6].value = PetSave.pet.energy;
+        if (PetSave.pet != null)
+        {
+            t_petname.text = PetSave.pet.petname;
+            t_statsmenuname.text = PetSave.pet.petname + "'s Stats";
+            t_moneycounter.text = PetSave.pet.money.ToString();
+            statsliders[0].value = PetSave.pet.firestat;
+            statsliders[1].value = PetSave.pet.plantstat;
+            statsliders[2].value = PetSave.pet.flystat;
+            statsliders[3].value = PetSave.pet.surfstat;
+            statsliders[4].value = PetSave.pet.expstat;
+            statsliders[5].value = PetSave.pet.happiness;
+            statsliders[6].value = PetSave.pet.energy;
+        }
     }
     
     public void SaveButton()
