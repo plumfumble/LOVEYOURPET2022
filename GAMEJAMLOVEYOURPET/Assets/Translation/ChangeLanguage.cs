@@ -16,6 +16,8 @@ public class ChangeLanguage : MonoBehaviour
 
     void Start()
     {
+        //PlayerPrefs.DeleteAll();
+
         string language = PlayerPrefs.GetString("Language");
         if (language == "Japanese")
         {
@@ -27,7 +29,7 @@ public class ChangeLanguage : MonoBehaviour
             textMeshProUGUI.font = _ENGFontAsset;
             textAsset = English;
         }
-        if (language == null)
+        else
         {
             textAsset = English;
         }
