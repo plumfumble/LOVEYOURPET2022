@@ -11,6 +11,8 @@ public class FlappyPlayer : MonoBehaviour
     private AudioSource bellsource;
     public bool losing;
 
+    public AudioSource flapSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,8 @@ public class FlappyPlayer : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             rigidbody.velocity = Vector2.up * velocity;
+            flapSound.pitch = Random.Range(0.95f, 1.05f);
+            flapSound.Play();
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
