@@ -22,7 +22,8 @@ public class MainMenuController : MonoBehaviour
                         mainGUI,
                         BGGUI,
                         evolveButton,
-                        languageMenu;
+                        languageMenu,
+                        loadingScreen;
     [SerializeField] PetControl petcontrols;
     bool doesOwnPet;
     [SerializeField] GameObject gameOpened;
@@ -76,7 +77,7 @@ public class MainMenuController : MonoBehaviour
         else
         {
             PetSave.pet.energy -= 2;
-            SceneManager.LoadScene("CatchingScene");
+            StartCoroutine(LoadScene("CatchingScene"));
         }
     }
 
@@ -236,5 +237,12 @@ public class MainMenuController : MonoBehaviour
 
         // Load the current scene
         SceneManager.LoadScene(sceneIndex, LoadSceneMode.Single);
+    }
+    private IEnumerator LoadScene(string scene)
+    {
+        loadingScreen.SetActive(true);
+        yield return new WaitForSeconds(1);
+        //loadingScreen.SetActive(false);
+        SceneManager.LoadScene(scene);
     }
 }
