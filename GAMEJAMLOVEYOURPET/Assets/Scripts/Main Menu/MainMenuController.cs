@@ -23,7 +23,8 @@ public class MainMenuController : MonoBehaviour
                         BGGUI,
                         evolveButton,
                         languageMenu,
-                        loadingScreen;
+                        loadingScreen,
+                        splashScreen;
     [SerializeField] PetControl petcontrols;
     bool doesOwnPet;
     [SerializeField] GameObject gameOpened;
@@ -55,6 +56,11 @@ public class MainMenuController : MonoBehaviour
         }
         */
 
+        if (GameOpened.Instance.Opened)
+        {
+            splashScreen.SetActive(false);
+            petcontrols.UPDATEPET();
+        }
 
     }
 

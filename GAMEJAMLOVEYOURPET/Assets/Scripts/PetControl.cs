@@ -12,10 +12,13 @@ public class PetControl : MonoBehaviour
     public GameObject oWings,
                     oTail,
                     oSprout,
-                    oFins;
+                    oFins,
+                    oBabyBody,
+                    oAdultBody;
 
     public void UPDATEPET()
     {
+        Debug.Log((float)PetSave.pet.happiness);
         Body.SetFloat("Fly", ((float)PetSave.pet.flystat) / 100);
         Body.SetFloat("Fire", ((float)PetSave.pet.firestat) / 100);
         Body.SetFloat("Plant", ((float)PetSave.pet.plantstat) / 100);
@@ -26,6 +29,8 @@ public class PetControl : MonoBehaviour
         if (PetSave.pet.isevolve)
         {
             Body.SetInt("IsEvolve", 1);
+            oBabyBody.SetActive(false);
+            oAdultBody.SetActive(true);
 
             if (PetSave.pet.isgoodadult)
             {
