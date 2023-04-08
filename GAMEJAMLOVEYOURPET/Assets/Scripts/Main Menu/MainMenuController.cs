@@ -23,10 +23,14 @@ public class MainMenuController : MonoBehaviour
                         BGGUI,
                         evolveButton,
                         languageMenu,
-                        loadingScreen;
+                        loadingScreen,
+                        PET;
     [SerializeField] PetControl petcontrols;
     bool doesOwnPet;
     [SerializeField] GameObject gameOpened;
+
+    public float maxPetScale = 27;
+
     public void Awake()
     {
         t_moneycounter = moneycounter.GetComponent<TextMeshProUGUI>();
@@ -61,14 +65,43 @@ public class MainMenuController : MonoBehaviour
     public void feedPet()
     {
         if (PetSave.pet.money < 5)
+        {
             onError("money");
+
+        }
+
         else
         {
             PetSave.pet.money -= 5;
             PetSave.pet.energy += 5;
+
+
+            if (PET.transform.localScale.x < maxPetScale)
+            {
+                 petGrow();
+
+            }
+
             GUIupdate();
         }
     }
+
+    public void petGrow()
+    {
+        Vector3 CScale = PET.transform.localScale;
+
+        CScale.x += 1;
+        CScale.y += 1;
+        CScale.z += 1;
+
+        PET.transform.localScale = CScale;
+
+
+    }
+
+
+
+
 
     public void playWithPet()
     {
