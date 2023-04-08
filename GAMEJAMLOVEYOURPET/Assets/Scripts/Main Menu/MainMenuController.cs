@@ -90,9 +90,9 @@ public class MainMenuController : MonoBehaviour
     {
         Vector3 CScale = PET.transform.localScale;
 
-        CScale.x += 1;
-        CScale.y += 1;
-        CScale.z += 1;
+        CScale.x += .25f;
+        CScale.y += .25f;
+        CScale.z += .25f;
 
         PET.transform.localScale = CScale;
 
