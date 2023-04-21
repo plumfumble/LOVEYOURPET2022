@@ -33,20 +33,25 @@ public class ChangeLanguage : MonoBehaviour
         }
         lineNumber = lineNumber - 1;
         string line = null;
-        string[] lines = textAsset.text.Split('\n');
-        if (lineNumber >= 0 && lineNumber < lines.Length)
+        if (textAsset != null)
         {
-            line = lines[lineNumber];
-        }
-        // Set the text in the TextMeshPro component
-        if (line != null)
-        {
-            textMeshProUGUI.text = line;
-            Debug.Log(line);
-        }
-        else
-        {
-            Debug.LogError($"Line number {lineNumber} is out of range for text asset {textAsset.name}");
+            string[] lines = textAsset.text.Split('\n');
+
+
+            if (lineNumber >= 0 && lineNumber < lines.Length)
+            {
+                line = lines[lineNumber];
+            }
+            // Set the text in the TextMeshPro component
+            if (line != null)
+            {
+                textMeshProUGUI.text = line;
+                Debug.Log(line);
+            }
+            else
+            {
+                Debug.LogError($"Line number {lineNumber} is out of range for text asset {textAsset.name}");
+            }
         }
     }
 }
