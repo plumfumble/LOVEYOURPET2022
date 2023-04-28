@@ -29,7 +29,7 @@ public class PetStats
         else
             petname = newname;
         happiness = 50;
-        energy = 5;
+        energy = 15;
         money = 0;
         firestat = 0;
         plantstat = 0;
